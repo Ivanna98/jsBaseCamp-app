@@ -5,7 +5,10 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   filename: 'index.html',
   inject: 'body'
 })
+<<<<<<< HEAD
 const host = process.env.HOST || 'localhost'
+=======
+>>>>>>> inition webpack setup
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -15,7 +18,11 @@ module.exports = {
   module: {
     rules: [
       {
+<<<<<<< HEAD
         test: /\.(scss|css)$/,
+=======
+        test: /\.scss$/,
+>>>>>>> inition webpack setup
         loader: 'style-loader!css-loader!sass-loader'
       },
       {
@@ -51,6 +58,7 @@ module.exports = {
       }
     ]
   },
+<<<<<<< HEAD
   plugins: [HtmlWebpackPluginConfig],
   devServer: {
     contentBase: './src',
@@ -61,4 +69,7 @@ module.exports = {
     port: 3000,
     publicPath: '/'
   }
+=======
+  plugins: [HtmlWebpackPluginConfig]
+>>>>>>> inition webpack setup
 }
