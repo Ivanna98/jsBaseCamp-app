@@ -4,6 +4,8 @@ import ReactDom from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css"
 
 ReactDom.render((
   <BrowserRouter>

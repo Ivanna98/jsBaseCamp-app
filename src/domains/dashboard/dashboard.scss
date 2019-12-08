@@ -1,0 +1,46 @@
+.wrapper-dashboard {
+  background-color: #3b4c63;
+  header {
+    height: 130px;
+    .top {
+      background-color: rgb(34, 42, 53);
+      height: 67px;
+    }
+    .logo {
+      background-image: url(../../logo.png);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 120px;
+      width: 300px;
+    }
+    .slogan {
+      color: #fff2c5;
+      font-size: 35px;
+    }
+  }
+  .major {
+    background-color: #fff2c5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px currentColor; 
+      .slick-prev:before {
+        color: rgb(34, 42, 53);
+      } 
+      .slick-next:before {
+        color: rgb(34, 42, 53);
+      
+    }
+  }
+  .title-shows {
+    font-size: 30px;
+    text-align: left;
+    color: #fff2c5;
+    
+  }
+  .big {
+    font-size: 40px;
+    padding: 5px;
+    color: rgb(34, 42, 53);
+  }
+  
+}
