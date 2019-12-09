@@ -1,7 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const webpack = require('webpack');
+const env = require('dotenv').config({path: path.join(__dirname) + '/.env'}).parsed;
 const APP_DIR = path.resolve(__dirname, "./src/");
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
+
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './src/index.html',
@@ -60,10 +67,14 @@ module.exports = {
     open: true,
     host,
     port: 3000,
-    publicPath: '/'
+    publicPath: '/',
+    historyApiFallback: true,
   },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  plugins: [HtmlWebpackPluginConfig]
+  plugins: [
+    HtmlWebpackPluginConfig,
+    new webpack.DefinePlugin(envKeys)
+  ]
 }
