@@ -4,11 +4,14 @@ import './dashboard.scss';
 import Slider from 'react-slick';
 import axios from 'axios';
 import { useScreenWidth } from '../../utils/screenWidth';
+import { config } from '../../config';
+import { Link } from 'react-router-dom';
 
 const calculateCardNum = (width) => {
   if (width < 550) return 1;
   else if (width < 800) return 2;
-  else if (width < 1200) return 3;
+  else if (width < 1000) return 3;
+  else if (width < 1200) return 4;
   else return 5;
 }
 
@@ -26,13 +29,13 @@ export const Dashboard = () => {
     slidesToScroll: 1,
   };
   React.useEffect(() => {
-    axios.get("http://localhost:3002/shows?genre=sci-fi&priority=8").then(({ data }) => {
-      setScifiShows(data.shows).catch(error => console.log(error));
-    });
-    axios.get("http://localhost:3002/shows?priority=10").then(({ data }) => {
-      setMajorShows(data.shows).catch(error => console.log(error));
-    });
-    axios.get("http://localhost:3002/shows?genre=cartoon&priority=8").then(({ data }) => {
+    axios.get(`${config.api}/shows?genre=sci-fi&priority=8`).then(({ data }) => {
+      setScifiShows(data.shows);
+    }).catch(error => console.log(error));
+    axios.get(`${config.api}/shows?priority=10`).then(({ data }) => {
+      setMajorShows(data.shows);
+    }).catch(error => console.log(error));
+    axios.get(`${config.api}/shows?genre=cartoon&priority=8`).then(({ data }) => {
       setCartoonShows(data.shows);
     }).catch(error => console.log(error));
   }, [setScifiShows, setMajorShows, setCartoonShows]);
@@ -46,7 +49,7 @@ export const Dashboard = () => {
         </div>
         
       </header>
-      <main className='d-flex flex-column align-items-center'>
+      <main className='d-flex flex-column align-items-center w-100 p-2'>
         <div className='container major p-5 m-5'>
           <h3 className='title-shows big'>Something interesting</h3>
           <Slider {...settings}>
@@ -71,6 +74,10 @@ export const Dashboard = () => {
             })}
           </Slider>
         </div>
+        <Link to='/shows'>
+          <button className='custom-button m-5' size='large'>More show</button>
+        </Link>
+      
       </main>
 
 

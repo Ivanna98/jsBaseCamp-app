@@ -17,6 +17,7 @@
     .slogan {
       color: #fff2c5;
       font-size: 35px;
+      font-weight: bold;
     }
   }
   .major {
@@ -35,6 +36,7 @@
     font-size: 30px;
     text-align: left;
     color: #fff2c5;
+    font-weight: bold;
     
   }
   .big {
@@ -43,4 +45,24 @@
     color: rgb(34, 42, 53);
   }
   
+}
+.custom-button {
+  color:  #3b4c63;
+  width: 180px;
+  height: 60px;
+  background-color: #fff2c5;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  white-space: none;
+}
+
+.custom-button:hover {
+  box-shadow: 0 0 10px 5px rgb(34, 42, 53);
+  background-color: #cac09c ;
+}
+
+.custom-button:active {
+  background-color: #afa581 ;
 }

@@ -1,5 +1,11 @@
 @font-face {
   font-family:'Titillium';
+  font-weight: bold;
+  src: url(./font/TitilliumWeb-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family:'Titillium';
   src: url(./font/TitilliumWeb-Regular.ttf) format('truetype');
 }
 
@@ -9,7 +15,6 @@ body {
   height: 100%;
   font-family:'Titillium', sans-serif !important;
 }
-
 
 * {
   box-sizing: border-box;
