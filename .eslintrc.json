@@ -1,6 +1,8 @@
 {
+    "parser": "babel-eslint",
     "env": {
         "browser": true,
+        "node": true,
         "es6": true
     },
     "extends": [
@@ -22,9 +24,10 @@
         "react"
     ],
     "rules": {
+        "react/prop-types": 0,
         "indent": [
             "error",
-            "tab"
+            2
         ],
         "linebreak-style": [
             "error",

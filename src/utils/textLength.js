@@ -3,4 +3,4 @@ export const textLength = (text) => {
     return (text.slice(0, 198)+' . . .');
   }
   else return text;
-}
+};
