@@ -53,6 +53,15 @@ module.exports = {
         ]
       },
       {
+        enforce: 'pre',
+        test: /\.(js|jsx)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        options: {
+          fix: true,
+        },
+      },
+      {
         test: /\.(js|jsx)$/,
         include: APP_DIR,
         exclude: /node_modules/,
@@ -75,6 +84,6 @@ module.exports = {
   },
   plugins: [
     HtmlWebpackPluginConfig,
-    new webpack.DefinePlugin(envKeys)
+    new webpack.DefinePlugin(envKeys),
   ]
 }

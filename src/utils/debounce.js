@@ -12,4 +12,4 @@ export const debounce = (f, ms) => {
     setTimeout(() => isCooldown = false, ms);
   };
 
-}
+};
