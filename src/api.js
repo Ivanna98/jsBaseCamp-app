@@ -5,7 +5,7 @@ axios.interceptors.request.use(
     const token = localStorage.getItem('auth');
     // if token exist in local storage - then we set it to the headers
     if (token) {
-      request.headers['Authorization'] = 'Bearer ' + token;
+      request.headers['Authorization'] = token;
     }
     return request;
   },
