@@ -47,7 +47,7 @@ export const ShowList = ({ match }) => {
           <Pagination onChange={onFetch} pageSize={elemOnPage} defaultCurrent={1} total={showAmount} /> 
           
         </div>
-        <CreateShowModal visible={visible} onClose={onClose}/>
+        <AdminAccess><CreateShowModal visible={visible} onClose={onClose}/></AdminAccess>
         <List
           itemLayout="vertical"
           dataSource={shows}
