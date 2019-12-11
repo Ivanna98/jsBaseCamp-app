@@ -1,10 +1,11 @@
 import React from 'react';
 import { Card } from '../../components/card';
+import { AdminAccess } from '../../components/AdminAccess';
 import './dashboard.scss';
 import Slider from 'react-slick';
-import axios from 'axios';
 import { useScreenWidth } from '../../utils/screenWidth';
 import { config } from '../../config';
+import axios from '../../api';
 import { Link } from 'react-router-dom';
 
 const calculateCardNum = (width) => {
@@ -28,13 +29,16 @@ export const Dashboard = () => {
     slidesToShow: cardNum,
     slidesToScroll: 1,
   };
+
   React.useEffect(() => {
     axios.get(`${config.api}/shows?genre=sci-fi&priority=8`).then(({ data }) => {
       setScifiShows(data.shows);
     }).catch(error => console.log(error));
+
     axios.get(`${config.api}/shows?priority=10`).then(({ data }) => {
       setMajorShows(data.shows);
     }).catch(error => console.log(error));
+
     axios.get(`${config.api}/shows?genre=cartoon&priority=8`).then(({ data }) => {
       setCartoonShows(data.shows);
     }).catch(error => console.log(error));
@@ -67,10 +71,8 @@ export const Dashboard = () => {
         </Slider>
       </div>
       <Link to='/shows'>
-        <button className='custom-button m-5' size='large'>More show</button>
+        <button className='custom-button big-size m-5' size='large'>More show</button>
       </Link>
-      
     </main>
-
   );
 };

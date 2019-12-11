@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import { Dashboard } from './domains/dashboard/Dashboard';
 import { ShowList } from './domains/showList/ShowList';
-
+import { LoginForm } from './domains/login/Login';
 
 export class App extends Component {
   render() {
     return (
-      <div className='wrapper-dashboard d-flex flex-column align-items-center '>
+      <div className='main-wrapper d-flex flex-column align-items-center h-100'>
         <header className='header-top w-100'>
           <div className='top d-flex justify-content-xl-between justify-content-md-between justify-content-center p-2 w-100'>
             <Link to='/'><div className='logo'></div></Link>
@@ -16,6 +16,7 @@ export class App extends Component {
         </header>
         <Switch>
           <Route path="/shows" component={ShowList} />
+          <Route path="/login" component={LoginForm} />
           <Route exact path="/" component={Dashboard} />
           <Redirect to="/" />
         </Switch>
