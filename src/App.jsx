@@ -3,6 +3,7 @@ import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import { Dashboard } from './domains/dashboard/Dashboard';
 import { ShowList } from './domains/showList/ShowList';
 import { LoginForm } from './domains/login/Login';
+import { Show } from './domains/show/Show';
 
 export class App extends Component {
   render() {
@@ -15,8 +16,9 @@ export class App extends Component {
           </div>
         </header>
         <Switch>
-          <Route path="/shows" component={ShowList} />
           <Route path="/login" component={LoginForm} />
+          <Route path='/shows/:id' component={Show}/>
+          <Route exact path="/shows" component={ShowList} />
           <Route exact path="/" component={Dashboard} />
           <Redirect to="/" />
         </Switch>
