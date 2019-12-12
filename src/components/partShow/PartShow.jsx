@@ -1,24 +1,28 @@
 import React from 'react';
+import './PartShow.scss';
 
-export const PartShow = ({ startDate, title, subtitle, posterImage, longDescription, rate, videoFragmentUrl }) => {
+export const PartShow = ({ startDate, title, subtitle, posterImage, longDescription, rate, videoFragmentURL }) => {
   return (
-    <div className='wrapper-partShow'>
-      <section className='left-section'>
-        <div className='poster' style={{ backgroundImage: `url(${posterImage})` }}></div>
+    <div className='wrapper-partShow  d-flex justify-content-center'>
+      <section className='left-section p-3'>
+        <div className='poster-general' style={{ backgroundImage: `url(${posterImage})` }}></div>
         <div className='date'>{startDate}</div>
       </section>
       <section className='right-section'>
-        <div className='top'>
-          <div>
-            <div className='title-show'>{title}</div>
+        <div className='top d-flex justify-content-around'>
+          <div className='d-flex flex-column align-items-center'>
+            <div className='title-general p-2'>{title}</div>
             {subtitle && (
-              <div className='subtitle'>{subtitle}</div>
+              <div className='subtitle p-1'>{subtitle}</div>
             )}
           </div>
           <div>{rate}/10</div>
+        </div >
+        <div className='d-flex flex-column align-items-center'>
+          <div>{videoFragmentURL}</div>
+          <div className='text-justify'>{longDescription}</div>
         </div>
-        <div>{videoFragmentUrl}</div>
-        <div className=''>{longDescription}</div>
+
       </section>
     </div>
   );

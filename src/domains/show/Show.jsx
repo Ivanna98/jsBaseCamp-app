@@ -8,6 +8,7 @@ import { Icon, message, Popconfirm } from 'antd';
 import { Route, Link } from 'react-router-dom';
 import { Season } from './Season';
 import { CreateSeasonModal } from '../../domains/modals/season/CreateSeasonModal';
+import './show.scss';
 
 export const Show = ({ match, history }) => {
   const [show, setShow] = React.useState(null);
@@ -40,15 +41,18 @@ export const Show = ({ match, history }) => {
   React.useEffect(() => onFetch(), []);
 
   return show ? (
-    <div>
+    <div className='generalInfo  d-flex flex-column align-items-center p-5 m-3'>
       <PartShow {...show} />
-      <AdminAccess>
-        <Icon onClick={showModalShow} className='icon text-white' type="form" />
-        <Popconfirm title="Are you sure?" onConfirm={onDelete}>
-          <Icon className='icon text-white' type="close" />
-        </Popconfirm>
-        <UpdateShowModal show={show} visible={visibleShow} onClose={onCloseShow} />
-      </AdminAccess>
+      <div className='icon-edit d-flex justify-content-around'>
+        <AdminAccess>
+          <Icon onClick={showModalShow} className='icon text-white' type="form" />
+          <Popconfirm title="Are you sure?" onConfirm={onDelete}>
+            <Icon className='icon text-white' type="close" />
+          </Popconfirm>
+          <UpdateShowModal show={show} visible={visibleShow} onClose={onCloseShow} />
+        </AdminAccess>
+      </div>
+
       <div>
         {show.seasons.sort((a, b) => a.seasonNumber - b.seasonNumber).map(season => (
           <Link to={match.url + '/' + season._id} key={season._id}>
@@ -60,7 +64,7 @@ export const Show = ({ match, history }) => {
             <Icon onClick={showModalSeason} className='icon text-white' type="plus-circle" />
           </AdminAccess>
           <AdminAccess>
-            <CreateSeasonModal show={match.params.id} visible={visibleSeason} onClose={onCloseSeason}/>
+            <CreateSeasonModal show={match.params.id} visible={visibleSeason} onClose={onCloseSeason} />
           </AdminAccess>
         </div>
       </div>
