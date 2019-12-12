@@ -1,16 +1,16 @@
 import React from 'react';
 import { Modal, Form, message } from 'antd';
-import { ChangeShow } from './ChangeShow';
+import { ChangeSeason } from './ChangeSeason';
 import axios from '../../../api';
 import { config } from '../../../config';
 
-const CreateShow = ({ form, visible, onClose }) => { 
+const CreateSeason = ({ form, visible, onClose, show, season }) => { 
 
   const onSubmit = React.useCallback(e => {
     e && e.preventDefault();
     form.validateFields((err, values) => {
       if (!err) {
-        axios.post(`${config.api}/shows`, values)
+        axios.post(`${config.api}/seasons`, {...values, show, season}  )
           .then(() => onClose() )
           .catch(e => message.error('Create failed'));
       }
@@ -19,15 +19,15 @@ const CreateShow = ({ form, visible, onClose }) => {
 
   return(
     <Modal 
-      title="Create Show"
+      title="Create Season"
       visible={visible}
       onOk={onSubmit}
       onClose={onClose}
       onCancel={onClose}
     >
-      <ChangeShow form={form}/>
+      <ChangeSeason form={form}/>
     </Modal>
   );
 };
 
-export const CreateShowModal = Form.create()(CreateShow);
+export const CreateSeasonModal = Form.create()(CreateSeason);

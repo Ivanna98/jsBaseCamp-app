@@ -12,7 +12,7 @@ const UpdateShow = ({ form, visible, onClose, show }) => {
       if (!err) {
         axios.put(`${config.api}/shows/${show._id}`, values)
           .then(() => onClose() )
-          .catch(e => message.error(e.response.data));
+          .catch(e => message.error('Update failed'));
       }
     });
   }, [form, onClose]);
