@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const env = require('dotenv').config({path: path.join(__dirname) + '/.env'}).parsed;
-const APP_DIR = path.resolve(__dirname, "./src/");
+const APP_DIR = path.resolve(__dirname, './src/');
 
 const envKeys = Object.keys(env).reduce((prev, next) => {
   prev[`process.env.${next}`] = JSON.stringify(env[next]);
@@ -14,15 +14,16 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './src/index.html',
   filename: 'index.html',
   inject: 'body'
-})
+});
 
-const host = process.env.HOST || 'localhost'
+const host = process.env.HOST || 'localhost';
 
 module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'index_bundle.js'
+    filename: 'index_bundle.js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -34,7 +35,7 @@ module.exports = {
         test: /\.(woff|woff2|ttf|otf|eot)$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
               outputPath: 'fonts'
             }
@@ -45,7 +46,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
               outputPath: 'images'
             }
@@ -65,7 +66,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         include: APP_DIR,
         exclude: /node_modules/,
-        use: "babel-loader"
+        use: 'babel-loader'
       }
     ]
   },
@@ -86,4 +87,4 @@ module.exports = {
     HtmlWebpackPluginConfig,
     new webpack.DefinePlugin(envKeys),
   ]
-}
+};
