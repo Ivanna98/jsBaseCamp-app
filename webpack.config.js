@@ -24,8 +24,14 @@ module.exports = {
     path: path.join(__dirname, '/dist'),
     filename: 'index_bundle.js',
     publicPath: '/',
+  
   },
+  optimization: {
+    minimize: true
+  }, 
+  
   module: {
+    
     rules: [
       {
         test: /\.(scss|css)$/,

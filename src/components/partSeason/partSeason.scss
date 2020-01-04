@@ -1,0 +1,8 @@
+.wrapper-part {
+  background-color: rgba(53, 49, 33, 0.3);
+  border-radius: 10px;
+  transition: box-shadow, 0.5s;
+}
+.wrapper-part:hover {
+  box-shadow: 0 0 10px black;
+}

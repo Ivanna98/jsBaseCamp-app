@@ -23,7 +23,7 @@ export const ChangeEpisode = ({ form: { getFieldDecorator } }) => {
       <Row gutter={16}>
         <Col span={12}>
           <Form.Item label="Poster">
-            {getFieldDecorator('posterUrl', {
+            {getFieldDecorator('posterURL', {
               rules: [{ required: false, message: 'Please enter poster image`s url' }],
             })(<Input placeholder="Please enter poster image`s url" />)}
           </Form.Item>
