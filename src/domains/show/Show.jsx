@@ -3,8 +3,7 @@ import { PartShow } from '../../components/partShow/PartShow';
 import { AdminAccess } from '../../components/AdminAccess';
 import axios from '../../api';
 import { config } from '../../config';
-import { UpdateShowModal } from '../../domains/modals/show/UpdateShowModal';
-import { Icon, message, Popconfirm } from 'antd';
+import { Icon, message, Popconfirm, Spin } from 'antd';
 import { Route, Link } from 'react-router-dom';
 import { Season } from './Season';
 import { CreateSeasonModal } from '../../domains/modals/season/CreateSeasonModal';
@@ -42,26 +41,20 @@ export const Show = ({ match, history }) => {
 
   return show ? (
     <div className='generalInfo  d-flex flex-column align-items-center p-5 m-3'>
-      <PartShow {...show} />
+      <PartShow showModalShow = {showModalShow} onCloseShow={onCloseShow} visibleShow = {visibleShow} show = {show}  onDelete = {onDelete} {...show} />
       <div className='icon-edit d-flex justify-content-around'>
-        <AdminAccess>
-          <Icon onClick={showModalShow} className='icon text-white' type="form" />
-          <Popconfirm title="Are you sure?" onConfirm={onDelete}>
-            <Icon className='icon text-white' type="close" />
-          </Popconfirm>
-          <UpdateShowModal show={show} visible={visibleShow} onClose={onCloseShow} />
-        </AdminAccess>
+
       </div>
 
-      <div>
+      <div className="d-flex align-items-center"> 
         {show.seasons.sort((a, b) => a.seasonNumber - b.seasonNumber).map(season => (
           <Link to={match.url + '/' + season._id} key={season._id}>
-            <div>{season.seasonNumber} - {season.seasonName}</div>
+            <div className="number m-1">{season.seasonNumber}</div>
           </Link>
         ))}
-        <div>
+        <div className="number m-1">
           <AdminAccess>
-            <Icon onClick={showModalSeason} className='icon text-white' type="plus-circle" />
+            <Icon onClick={showModalSeason} className='icon' type="plus-circle" />
           </AdminAccess>
           <AdminAccess>
             <CreateSeasonModal show={match.params.id} visible={visibleSeason} onClose={onCloseSeason} />
@@ -70,5 +63,5 @@ export const Show = ({ match, history }) => {
       </div>
       <Route path={match.path + '/:seasonId'} component={Season} />
     </div>
-  ) : <>Loading</>;
+  ) : <Spin/>;
 };

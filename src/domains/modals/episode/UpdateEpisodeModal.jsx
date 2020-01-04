@@ -39,8 +39,8 @@ export const UpdateEpisodeModal = Form.create({
       episodeNumber: Form.createFormField({
         value: episode.episodeNumber
       }),
-      posterUrl: Form.createFormField({
-        value: episode.posterUrl
+      posterURL: Form.createFormField({
+        value: episode.posterURL
       }),
       videoFragmentURL: Form.createFormField({
         value: episode.videoFragmentURL

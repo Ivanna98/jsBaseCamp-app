@@ -40,8 +40,8 @@ export const UpdateSeasonModal = Form.create({
       seasonNumber: Form.createFormField({
         value: season.seasonNumber
       }),
-      posterUrl: Form.createFormField({
-        value: season.posterUrl
+      posterURL: Form.createFormField({
+        value: season.posterURL
       }),
       videoFragmentURL: Form.createFormField({
         value: season.videoFragmentURL
